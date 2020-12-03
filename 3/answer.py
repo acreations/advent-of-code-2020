@@ -3,20 +3,7 @@
 import os
 
 def collect(data, right, down):
-
-    times = len(data) * 3
-
-    expanded_data = []
-
-    for d in data:
-        expanded_data.append(d * times)
-
-    result = []
-
-    for x in range(1, int(len(expanded_data)/down)):
-        result.append(expanded_data[x*down][x*right])
-
-    return result
+    return [data[x*down][x*right] for x in range(1, int(len(data)/down))]
 
 def multiply(list):
     result = 1
@@ -27,6 +14,9 @@ def multiply(list):
 base_path = os.path.dirname(os.path.abspath(__file__))
 
 input = open("%s/input" % base_path, "r").read().splitlines()
+
+# Expand it
+input = [i*len(input) for i in input]
 
 print("\n = Part One\n")
 
