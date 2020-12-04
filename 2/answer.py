@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import sys
 
 def parse(data):
     d = data.split()
@@ -25,14 +25,11 @@ def is_valid_policy_two(a, b, policy, passwd):
 
     return (match_pos_one or match_pos_two) and not (match_pos_one and match_pos_two)
 
-
-base_path = os.path.dirname(os.path.abspath(__file__))
-
-input = open("%s/input" % base_path, "r").read().splitlines()
+input = open("{}/input".format(sys.path[0]), "r").read().splitlines()
 
 valid_policy_one = 0;
 
-print("\n = Part One\n")
+print(open("{}/part_one".format(sys.path[0]), "r").read())
 
 for row in input:
     data = parse(row)
@@ -40,9 +37,10 @@ for row in input:
     if is_valid_policy_one(**data):
         valid_policy_one += 1
 
-print("Number of valid passwords are {} (of {} passwords)".format(valid_policy_one, len(input)))
+print("{}\nMy answer is {}\n{}".format("="*16, valid_policy_one, "="*16))
 
-print("\n = Part Two\n")
+print(open("{}/part_two".format(sys.path[0]), "r").read())
+
 
 valid_policy_two = 0
 
@@ -52,4 +50,4 @@ for row in input:
     if is_valid_policy_two(**data):
         valid_policy_two += 1
 
-print("Number of valid passwords are {} (of {} passwords)".format(valid_policy_two, len(input)))
+print("{}\nMy answer is {}\n{}".format("="*16, valid_policy_two, "="*16))

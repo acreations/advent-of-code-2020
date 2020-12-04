@@ -6,7 +6,6 @@ i = list(map(int, open("{}/input".format(sys.path[0]), "r").read().split()))
 
 equal_size = int(len(i)/2)
 
-print("")
 print(open("{}/part_one".format(sys.path[0]), "r").read())
 
 for x in range(0, equal_size-1):
@@ -14,7 +13,6 @@ for x in range(0, equal_size-1):
         if i[x] + i[y] == 2020:
             print("{}\nMy answer is {}\n{}".format("="*20, i[x]*i[y], "="*20))
 
-print("")
 print(open("{}/part_two".format(sys.path[0]), "r").read())
 
 equal_size = int(len(i)/3)
