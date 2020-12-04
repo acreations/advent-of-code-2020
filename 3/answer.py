@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import os
+import sys
 
 def collect(data, right, down):
     return [data[x*down][x*right] for x in range(1, int(len(data)/down))]
@@ -11,18 +11,17 @@ def multiply(list):
         result *= x
     return result
 
-base_path = os.path.dirname(os.path.abspath(__file__))
 
-input = open("%s/input" % base_path, "r").read().splitlines()
+input = open("{}/input".format(sys.path[0]), "r").read().splitlines()
 
 # Expand it
 input = [i*len(input) for i in input]
 
-print("\n = Part One\n")
+print(open("{}/part_one".format(sys.path[0]), "r").read())
 
-print("Number of trees are {}".format(collect(input, 3, 1).count("#")))
+print("{}\nMy answer is {}\n{}".format("="*16, collect(input, 3, 1).count("#"), "="*16))
 
-print("\n = Part Two\n")
+print(open("{}/part_two".format(sys.path[0]), "r").read())
 
 trees = []
 trees.append(collect(input, 1, 1).count("#"))
@@ -31,4 +30,4 @@ trees.append(collect(input, 5, 1).count("#"))
 trees.append(collect(input, 7, 1).count("#"))
 trees.append(collect(input, 1, 2).count("#"))
 
-print("Number of trees are {}".format(multiply(trees)))
+print("{}\nMy answer is {}\n{}".format("="*23, multiply(trees), "="*23))
