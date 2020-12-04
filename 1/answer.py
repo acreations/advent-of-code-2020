@@ -1,25 +1,28 @@
 #!/usr/bin/env python
 
-import os
+import sys
 
 def correct_sum_of_2020(*n):
     return sum(n) == 2020
 
-base_path = os.path.dirname(os.path.abspath(__file__))
+i = list(map(int, open("{}/input".format(sys.path[0]), "r").read().split()))
 
-input = list(map(int, open("{}/input".format(base_path), "r").read().split()))
+equal_size = int(len(i)/2)
 
-print("\n = Part One \n")
+print("")
+print(open("{}/part_one".format(sys.path[0]), "r").read())
 
-for x in input:
-    for y in input:
-        if correct_sum_of_2020(x,y):
-            print("{} + {} = 2020. Multiplying them is {}".format(x, y, (x*y)))
+for x in range(0, equal_size):
+    for y in range(equal_size, len(i)):
+        if correct_sum_of_2020(i[x],i[y]):
+            print("{}\nMy answer is {}\n{}".format("="*20, i[x]*i[y], "="*20))
 
-print("\n= Part Two \n")
+print("")
+print(open("{}/part_two".format(sys.path[0]), "r").read())
 
-for x in input:
-    for y in input:
-        for z in input:
+for x in i:
+    for y in i:
+        for z in i:
             if correct_sum_of_2020(x,y,z):
-                print("{} + {} + {}= 2020. Multiplying them is {}".format(x, y, z, (x*y*z)))
+                print("{}\nMy answer is {}\n{}".format("="*23, x*y*z, "="*23))
+                break
