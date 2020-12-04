@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import os
 import re
 import sys
 
@@ -97,12 +96,12 @@ passport_candidates = as_passports_candidates(input)
 
 valid_passports = to_valid_passports(passport_candidates)
 
-print("\n = Part One\n")
+print(open("{}/part_one".format(sys.path[0]), "r").read())
 
-print("Number of passwords candidates {} and {} are valid".format(len(passport_candidates), len(valid_passports)))
+print("{}\nMy answer is {}\n{}".format("="*16, len(valid_passports), "="*16))
 
-print("\n = Part Two\n")
+print(open("{}/part_two".format(sys.path[0]), "r").read())
 
 strict_passports = to_strict_passports(valid_passports)
 
-print("Number of passwords candidates {} and {} are valid".format(len(passport_candidates), len(strict_passports)))
+print("{}\nMy answer is {}\n{}".format("="*16, len(strict_passports), "="*16))
