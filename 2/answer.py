@@ -25,29 +25,16 @@ def is_valid_policy_two(a, b, policy, passwd):
 
     return (match_pos_one or match_pos_two) and not (match_pos_one and match_pos_two)
 
-input = open("{}/input".format(sys.path[0]), "r").read().splitlines()
-
-valid_policy_one = 0;
+data = [ parse(i) for i in open("{}/input".format(sys.path[0]), "r").read().splitlines()]
 
 print(open("{}/part_one".format(sys.path[0]), "r").read())
 
-for row in input:
-    data = parse(row)
+valid_policy = [ is_valid_policy_one(**d) for d in data]
 
-    if is_valid_policy_one(**data):
-        valid_policy_one += 1
-
-print("{}\nMy answer is {}\n{}".format("="*16, valid_policy_one, "="*16))
+print("{}\nMy answer is {}\n{}".format("="*16, valid_policy.count(True), "="*16))
 
 print(open("{}/part_two".format(sys.path[0]), "r").read())
 
+valid_policy = [ is_valid_policy_two(**d) for d in data]
 
-valid_policy_two = 0
-
-for row in input:
-    data = parse(row)
-
-    if is_valid_policy_two(**data):
-        valid_policy_two += 1
-
-print("{}\nMy answer is {}\n{}".format("="*16, valid_policy_two, "="*16))
+print("{}\nMy answer is {}\n{}".format("="*16, valid_policy.count(True), "="*16))
