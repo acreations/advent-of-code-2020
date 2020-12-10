@@ -22,7 +22,6 @@ def arrangements(input):
     cache = [0,0,1] + [0] * input[-1]
 
     for a in input:
-        # a=1 corresponds to cache[3], so +2
         i = a + 2
         cache[i] = sum(cache[i-3:i])
 
@@ -41,4 +40,4 @@ print("{}\nMy answer is {}\n{}".format("="*17, (j.count(1) * j.count(3)), "="*17
 
 print(open("{}/part_two".format(sys.path[0]), "r").read())
 
-print("{}\nMy answer is {}\n{}".format("="*15, arrangements(input), "="*15))
+print("{}\nMy answer is {}\n{}".format("="*28, arrangements(input), "="*28))
